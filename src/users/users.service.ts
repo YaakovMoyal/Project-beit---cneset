@@ -18,14 +18,18 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto) {
-    const newUser = new this.userModule(createUserDto);
-    const encryptedPassword = generateUserPassword(createUserDto.password);
+    try {
+      const newUser = new this.userModule(createUserDto);
+      const encryptedPassword = generateUserPassword(createUserDto.password);
 
-    newUser.password = encryptedPassword;
+      newUser.password = encryptedPassword;
 
-    await newUser.save();
-    await this.cacheManager.reset();
-    return newUser;
+      await newUser.save();
+      await this.cacheManager.reset();
+      return newUser;
+    } catch (error) {
+      return Promise.reject(error);
+    }
   }
 
   async login(userFromClient: loginIF) {
