@@ -1,5 +1,5 @@
 import { verify, sign } from 'jsonwebtoken';
-import { TokenIF, UserPayloadIF } from '../interfaces/tokenIF';
+import { TokenIF } from '../interfaces/tokenIF';
 
 const key = 'my_private_key';
 
