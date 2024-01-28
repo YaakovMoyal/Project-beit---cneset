@@ -45,7 +45,7 @@ export class UsersService {
 
       if (!validPassword) throw new Error('Invalid password');
 
-      const token = generateAuthToken({ _id, isAdmin: true });
+      const token = generateAuthToken({ _id, isAdmin: false });
       return token;
     } catch (error) {
       return Promise.reject(error);
