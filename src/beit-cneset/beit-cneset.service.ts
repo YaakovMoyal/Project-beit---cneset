@@ -13,7 +13,7 @@ export class BeitCnesetService {
   constructor(
     @InjectModel('beit-Cneset')
     private readonly beitCnesetModule: Model<BeitCnesetIF>,
-    @Inject(CACHE_MANAGER) private cacheManager: Cache,
+    @Inject(CACHE_MANAGER) private cacheManager: Cache
   ) {}
 
   async create(createBeitCnesetDto: CreateBeitCnesetDto) {
@@ -36,9 +36,15 @@ export class BeitCnesetService {
   }
 
   async update(name: string, updateBeitCnesetDto: UpdateBeitCnesetDto) {
-    const beitCneset = await this.beitCnesetModule.findOne({ name });
+    let beitCneset = await this.beitCnesetModule.findOne({ name });
 
-    return `This action updates a #${name} beitCneset`;
+    if (!beitCneset) {
+      throw new Error(`Beit Cneset with the name "${name}" was not found.`);
+    }
+
+    await this.beitCnesetModule.updateOne({ name }, updateBeitCnesetDto);
+
+    return `Beit Cneset with the name "${name}" has been successfully updated.`;
   }
 
   async remove(name: string) {

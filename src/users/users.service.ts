@@ -14,11 +14,16 @@ import { Cache } from 'cache-manager';
 export class UsersService {
   constructor(
     @InjectModel('user') private readonly userModule: Model<UserIF>,
-    @Inject(CACHE_MANAGER) private cacheManager: Cache,
+    @Inject(CACHE_MANAGER) private cacheManager: Cache
   ) {}
 
   async create(createUserDto: CreateUserDto) {
     try {
+      const { email } = createUserDto;
+
+      const userFromDb = await this.userModule.findOne({ email });
+      if (userFromDb)
+        throw new Error('There is already a user with such an email');
       const newUser = new this.userModule(createUserDto);
       const encryptedPassword = generateUserPassword(createUserDto.password);
 
@@ -85,11 +90,13 @@ export class UsersService {
     const user = await this.userModule.findById(id);
     if (!user) throw new Error();
     await this.userModule.deleteOne({ _id: id }).exec();
+    await this.cacheManager.reset();
     return `This action removes #${id} user`;
   }
 
   async removeAll() {
     await this.userModule.deleteMany();
+    await this.cacheManager.reset();
     return `This action removes all users`;
   }
 }
