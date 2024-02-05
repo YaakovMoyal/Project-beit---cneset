@@ -8,6 +8,7 @@ export interface TfilaIF {
 export interface BeitCnesetIF {
   name: string;
   address: string;
+  URLaddress: string;
   community: string;
   image: string;
   gabai: UserIF;

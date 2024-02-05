@@ -36,7 +36,7 @@ export class BeitCnesetService {
   }
 
   async update(name: string, updateBeitCnesetDto: UpdateBeitCnesetDto) {
-    let beitCneset = await this.beitCnesetModule.findOne({ name });
+    const beitCneset = await this.beitCnesetModule.findOne({ name });
 
     if (!beitCneset) {
       throw new Error(`Beit Cneset with the name "${name}" was not found.`);

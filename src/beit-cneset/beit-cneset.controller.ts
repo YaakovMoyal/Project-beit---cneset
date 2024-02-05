@@ -6,13 +6,13 @@ import {
   Param,
   Delete,
   Put,
-  UseGuards,
+  // UseGuards,
 } from '@nestjs/common';
 import { BeitCnesetService } from './beit-cneset.service';
 import { CreateBeitCnesetDto } from './dto/create-beit-cneset.dto';
 import { UpdateBeitCnesetDto } from './dto/update-beit-cneset.dto';
-import { LoginGuard } from 'src/auth/guards/login/login.guard';
-import { AdminGuard } from 'src/auth/guards/admin/admin.guard';
+// import { LoginGuard } from 'src/auth/guards/login/login.guard';
+// import { AdminGuard } from 'src/auth/guards/admin/admin.guard';
 
 @Controller('beit-cneset')
 export class BeitCnesetController {

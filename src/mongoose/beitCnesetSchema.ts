@@ -9,6 +9,7 @@ const TfilaSchema = new mongoose.Schema({
 export const beitCnesetSchema = new mongoose.Schema({
   name: { type: String, required: true },
   address: { type: String, required: true },
+  URLaddress: { type: String, required: true },
   community: { type: String, required: true },
   image: { type: String, required: true },
   gabai: { type: userSchema, required: true },

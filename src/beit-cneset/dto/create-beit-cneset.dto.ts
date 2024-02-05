@@ -5,6 +5,7 @@ import { UserIF } from 'src/mongoose/userIF';
 export class CreateBeitCnesetDto {
   @IsNotEmpty() name: string;
   @IsNotEmpty() address: string;
+  @IsNotEmpty() URLaddress: string;
   @IsNotEmpty() community: string;
   @IsNotEmpty() image: string;
   @IsNotEmpty() gabai: UserIF;

@@ -6,6 +6,7 @@ import { TfilaIF } from 'src/mongoose/beitCnesetIF';
 export class UpdateBeitCnesetDto extends PartialType(CreateBeitCnesetDto) {
   name: string;
   address: string;
+  URLaddress: string;
   community: string;
   image: string;
   gabai: UserIF;
