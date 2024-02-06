@@ -6,6 +6,12 @@
 
 Download or clone the project from this repo
 
+for cloning from github enter the following command in the cmd / terminal in the folder
+
+```
+git clone https://github.com/YaakovMoyal/Project---beit-cneset-back.git
+```
+
 ### Download the node_modules
 
 Enter the "Project---beit-cneset-back" folder by typing the following command in the terminal/CMD in the project root folder
@@ -38,7 +44,7 @@ sudo apt-get install redis-stack-server
 
 - Enter your Linux's password
 
-### Upload the redis
+### Running the redis
 
 run the following command in ubuntu - wsl terminal
 
@@ -52,7 +58,7 @@ sudo redis-stack-server start
 
 #
 
-## Running the server
+### Running the server
 
 ```bash
 # development
