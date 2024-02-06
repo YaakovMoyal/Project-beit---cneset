@@ -77,30 +77,47 @@ sudo redis-stack-server start
 
 ### Running the server
 
-```bash
-# development
-$ npm run start
+#### development
 
-# watch mode
-$ npm run start:dev
+```
+npm run start
+```
+
+#### watch mode
+
+```
+npm run start:dev
+```
+
 - The page will reload if you make edits
 - You should see the following text in the cmd / terminal
 
-# production mode
-$ npm run start:prod
+#### production mode
+
 ```
+npm run start:prod
+```
+
+#
 
 ## Test
 
-```bash
-# unit tests
-$ npm run test
+#### unit tests
 
-# e2e tests
-$ npm run test:e2e
+```
+npm run test
+```
 
-# test coverage
-$ npm run test:cov
+#### e2e tests
+
+```
+npm run test:e2e
+```
+
+#### test coverage
+
+```
+npm run test:cov
 ```
 
 #
