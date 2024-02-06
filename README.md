@@ -51,7 +51,7 @@ npm i
 
 ### Installation redis
 
-run the following command in new terminal
+run the following command in ubuntu - wsl terminal
 
 ```
 curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
