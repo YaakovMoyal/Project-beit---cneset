@@ -51,7 +51,7 @@ npm i
 
 ### Installation redis
 
-run the following command in ubuntu - wsl terminal
+Enter the following command in ubuntu - wsl terminal
 
 ```
 curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
@@ -65,7 +65,7 @@ sudo apt-get install redis-stack-server
 
 ### Running the redis
 
-run the following command in ubuntu - wsl terminal
+Enter the following command in ubuntu - wsl terminal
 
 ```
 sudo redis-stack-server start
@@ -76,6 +76,8 @@ sudo redis-stack-server start
 #
 
 ### Running the server
+
+Enter the following command in the cmd / terminal in the root folder of this project
 
 #### development
 
@@ -101,6 +103,8 @@ npm run start:prod
 #
 
 ## Test
+
+Enter the following command in the cmd / terminal in the root folder of this project
 
 #### unit tests
 
