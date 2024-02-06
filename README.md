@@ -49,8 +49,6 @@ npm i
 
 #
 
-#
-
 ### Installation redis
 
 run the following command in new terminal
@@ -74,8 +72,6 @@ sudo redis-stack-server start
 ```
 
 - Enter your Linux's password
-
-#
 
 #
 
