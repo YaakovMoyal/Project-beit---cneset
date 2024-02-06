@@ -69,6 +69,8 @@ $ npm run start
 
 # watch mode
 $ npm run start:dev
+- The page will reload if you make edits
+- You should see the following text in the cmd / terminal
 
 # production mode
 $ npm run start:prod
