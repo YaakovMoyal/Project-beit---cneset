@@ -14,7 +14,7 @@ import { Cache } from 'cache-manager';
 export class UsersService {
   constructor(
     @InjectModel('user') private readonly userModule: Model<UserIF>,
-    @Inject(CACHE_MANAGER) private cacheManager: Cache
+    @Inject(CACHE_MANAGER) private cacheManager: Cache,
   ) {}
 
   async create(createUserDto: CreateUserDto) {
@@ -28,6 +28,8 @@ export class UsersService {
       const encryptedPassword = generateUserPassword(createUserDto.password);
 
       newUser.password = encryptedPassword;
+
+      newUser.isAdmin = false;
 
       await newUser.save();
       await this.cacheManager.reset();
@@ -44,13 +46,13 @@ export class UsersService {
       const userFromDb = await this.userModule.findOne({ email });
       if (!userFromDb) throw new Error('Invalid email');
 
-      const { _id, password: passwordFromDB } = userFromDb;
+      const { _id, isAdmin, password: passwordFromDB } = userFromDb;
 
       const validPassword = comparePassword(passwordFromClient, passwordFromDB);
 
       if (!validPassword) throw new Error('Invalid password');
 
-      const token = generateAuthToken({ _id, isAdmin: false });
+      const token = generateAuthToken({ _id, isAdmin });
       return token;
     } catch (error) {
       return Promise.reject(error);

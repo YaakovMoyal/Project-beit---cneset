@@ -5,4 +5,5 @@ export interface UserIF {
   email: string;
   password: string;
   phone: string;
+  isAdmin:boolean
 }

@@ -6,4 +6,5 @@ export const userSchema = new mongoose.Schema({
   email: { type: String, require },
   password: { type: String, require },
   phone: { type: String, require },
+  isAdmin: { type: Boolean, require },
 });
