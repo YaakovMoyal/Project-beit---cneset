@@ -20,15 +20,14 @@ export class UsersService {
   async create(createUserDto: CreateUserDto) {
     try {
       const { email } = createUserDto;
-
       const userFromDb = await this.userModule.findOne({ email });
       if (userFromDb)
         throw new Error('There is already a user with such an email');
+
       const newUser = new this.userModule(createUserDto);
       const encryptedPassword = generateUserPassword(createUserDto.password);
 
       newUser.password = encryptedPassword;
-
       newUser.isAdmin = false;
 
       await newUser.save();
@@ -61,28 +60,33 @@ export class UsersService {
 
   async findAll() {
     const users = this.userModule.find().exec();
-    const result = (await users).map(({ id, name, email, phone }) => ({
-      id,
-      name,
-      email,
-      phone,
-    }));
+    const result = (await users).map(
+      ({ id, name, email, phone, isAdmin, managementOf }) => ({
+        id,
+        name,
+        email,
+        phone,
+        isAdmin,
+        managementOf,
+      }),
+    );
     return result;
   }
 
   async findOne(id: string) {
     const user = await this.userModule.findById(id);
-    // if (!user) throw new Error(`There is no user with ID: ${id}`);
-    const { _id, name, email, phone } = user;
-    return { id: _id, name, email, phone };
+    if (!user) throw new Error(`There is no user with ID: ${id}`);
+    const { _id, name, email, phone, isAdmin, managementOf } = user;
+    return { id: _id, name, email, phone, isAdmin, managementOf };
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
     const user = await this.userModule.findById(id);
-    const { name, email, phone } = updateUserDto;
+    const { name, email, phone, managementOf } = updateUserDto;
     user.name = name;
     user.email = email;
     user.phone = phone;
+    user.managementOf = managementOf;
     await user.save();
     await this.cacheManager.reset();
     return user;
